@@ -6,7 +6,7 @@
 /*   By: nsierra- <nsierra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 00:30:31 by nsierra-          #+#    #+#             */
-/*   Updated: 2021/11/25 18:10:08 by nsierra-         ###   ########.fr       */
+/*   Updated: 2021/11/26 23:52:12 by nsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,15 @@ int	ft_printf(const char *format, ...)
 	t_printf		state_machine;
 	unsigned int	state;
 
-	init_state_machine(&state_machine);
 	if (format == NULL)
 		return (-1);
+	init_state_machine(&state_machine);
+	va_start(state_machine.args, format);
 	while (format && *format && state_machine.state != STATE_END)
 	{
 		state = state_machine.state;
 		format = state_machine.callback[state](format, &state_machine);
 	}
+	va_end(state_machine.args);
 	return (0);
 }

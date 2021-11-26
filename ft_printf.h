@@ -6,7 +6,7 @@
 /*   By: nsierra- <nsierra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 00:36:16 by nsierra-          #+#    #+#             */
-/*   Updated: 2021/11/26 04:39:54 by nsierra-         ###   ########.fr       */
+/*   Updated: 2021/11/26 23:51:38 by nsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,23 @@
 # define FT_PRINTF_H
 
 # include <stdio.h>
+# include <stdlib.h>
+# include <stdarg.h>
+# include "libft.h"
 
 # define FLAG_CHARACTER '%'
 # define FLAG_OPTIONS " .+-0#"
 # define FLAG_TYPES "cspdiuxX%"
 # define STATE_DEFAULT 0
-# define STATE_END 1
-# define STATE_FLAG 2
+# define STATE_FLAG 1
+# define STATE_END 2
+
+/* POINTEUR NULL (nil) linux 0x0 mac */
 
 typedef struct	s_printf
 {
-	const char		*(*callback[1])(const char *, struct s_printf *);
+	const char		*(*callback[2])(const char *, struct s_printf *);
+	va_list			args;
 	int				bytes_printed;
 	unsigned int	state;
 
@@ -32,17 +38,26 @@ typedef struct	s_printf
 
 typedef struct s_printf_op
 {
-	int		alternative;
-	int		padding;
-	int		justified_left;
-	int		blank;
-	int		force_plus;
-	int		precision;
+	t_bool	alternative;
+	t_bool	padding;
+	t_bool	justified_left;
+	t_bool	blank;
+	t_bool	force_plus;
+	t_bool	precision;
+	int		precision_value;
 	char	type;
 }	t_printf_op;
 
 int			ft_printf(const char *format, ...);
 const char	*state_default(const char *format, t_printf *state_machine);
 const char	*state_flag(const char *format, t_printf *state_machine);
+void		print_character(t_printf_op *op, t_printf *state_machine);
+void		print_string(t_printf_op *op, t_printf *state_machine);
+void		print_pointer(t_printf_op *op, t_printf *state_machine);
+void		print_int(t_printf_op *op, t_printf *state_machine);
+void		print_unsigned_int(t_printf_op *op, t_printf *state_machine);
+void		print_hex_lowercase(t_printf_op *op, t_printf *state_machine);
+void		print_hex_uppercase(t_printf_op *op, t_printf *state_machine);
+void		print_flag(t_printf_op *op, t_printf *state_machine);
 
 #endif

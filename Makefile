@@ -6,7 +6,7 @@
 #    By: nsierra- <nsierra-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/22 13:56:55 by nsierra-          #+#    #+#              #
-#    Updated: 2021/11/25 18:17:05 by nsierra-         ###   ########.fr        #
+#    Updated: 2021/11/26 23:15:22 by nsierra-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,16 @@ NAME = libftprintf.a
 
 SRC = ft_printf.c \
 	state_default.c \
-	state_flag.c
+	state_flag.c \
+	print_character.c \
+	print_string.c \
+	print_pointer.c \
+	print_int.c \
+	print_unsigned_int.c \
+	print_hex_lowercase.c \
+	print_hex_uppercase.c \
+	print_flag.c \
+
 OBJ = $(SRC:.c=.o)
 
 CC = gcc
@@ -36,7 +45,7 @@ libft/libft.a:
 	make -C libft/ bonus
 
 test: $(NAME) tests.c
-	gcc $(LFLAGS) tests.c $(LFLAGS) -o test && ./test
+	gcc $(IFLAGS) $(LFLAGS) tests.c $(LFLAGS) -o test && ./test
 
 clean:
 	make -C libft/ clean

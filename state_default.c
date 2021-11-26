@@ -6,7 +6,7 @@
 /*   By: nsierra- <nsierra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 23:08:59 by nsierra-          #+#    #+#             */
-/*   Updated: 2021/11/25 18:08:42 by nsierra-         ###   ########.fr       */
+/*   Updated: 2021/11/26 23:50:23 by nsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static int	get_state(const char token)
 const char	*state_default(const char *format, t_printf *state_machine)
 {
 	int	i;
+
 
 	i = 0;
 	while (format[i] && format[i] != FLAG_CHARACTER)
