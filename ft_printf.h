@@ -6,7 +6,7 @@
 /*   By: nsierra- <nsierra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 00:36:16 by nsierra-          #+#    #+#             */
-/*   Updated: 2021/11/25 18:38:32 by nsierra-         ###   ########.fr       */
+/*   Updated: 2021/11/26 04:39:54 by nsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <stdio.h>
 
 # define FLAG_CHARACTER '%'
+# define FLAG_OPTIONS " .+-0#"
+# define FLAG_TYPES "cspdiuxX%"
 # define STATE_DEFAULT 0
 # define STATE_END 1
 # define STATE_FLAG 2
