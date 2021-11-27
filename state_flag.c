@@ -6,7 +6,7 @@
 /*   By: nsierra- <nsierra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 18:10:19 by nsierra-          #+#    #+#             */
-/*   Updated: 2021/11/27 02:08:29 by nsierra-         ###   ########.fr       */
+/*   Updated: 2021/11/27 21:41:59 by nsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static const char	*load_precision_option(const char *format, t_printf_op *op)
 
 static const char	*load_op_config_options(const char *format, t_printf_op *op)
 {
-	while (*format && ft_strchr(FLAG_OPTIONS, *format))
+	while (*format && ft_strchr(FLAGS, *format))
 	{
 		if (*format == ' ' && op->blank == FALSE)
 		{
@@ -59,9 +59,9 @@ static const char	*load_op_config_options(const char *format, t_printf_op *op)
 	return (format);
 }
 
-static void	dispatch_op(t_printf_op *op, t_printf *state_machine)
+static void	dispatch_op(t_printf_op *op, t_printf *state)
 {
-	void	(*callback[9])(t_printf_op *op, t_printf *state_machine);
+	void	(*callback[9])(t_printf_op *op, t_printf *state);
 
 	callback[0] = print_character;
 	callback[1] = print_string;
@@ -72,25 +72,25 @@ static void	dispatch_op(t_printf_op *op, t_printf *state_machine)
 	callback[6] = print_hex_lowercase;
 	callback[7] = print_hex_uppercase;
 	callback[8] = print_flag;
-	callback[ft_strchr(FLAG_TYPES, op->type) - FLAG_TYPES](op, state_machine);
+	callback[ft_strchr(CONV_SPECIFIERS, op->type) - CONV_SPECIFIERS](op, state);
 }
 
-const char	*state_flag(const char *format, t_printf *state_machine)
+const char	*state_flag(const char *format, t_printf *state)
 {
 	const char	*format_original;
 	t_printf_op	op;
 
 	format_original = format;
-	state_machine->state = STATE_DEFAULT;
+	state->current = STATE_DEFAULT;
 	ft_bzero(&op, sizeof(t_printf_op));
 	format = load_op_config_options(++format, &op);
-	if (ft_strchr(FLAG_TYPES, *format) == NULL)
+	if (ft_strchr(CONV_SPECIFIERS, *format) == NULL)
 	{
-		state_machine->bytes_printed += 1;
+		state->bytes_printed += 1;
 		write(STDOUT_FILENO, "%", 1);
 		return (++format_original);
 	}
 	op.type = *format++;
-	dispatch_op(&op, state_machine);
+	dispatch_op(&op, state);
 	return (format);
 }

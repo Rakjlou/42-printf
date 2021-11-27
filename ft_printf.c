@@ -6,7 +6,7 @@
 /*   By: nsierra- <nsierra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 00:30:31 by nsierra-          #+#    #+#             */
-/*   Updated: 2021/11/27 01:51:39 by nsierra-         ###   ########.fr       */
+/*   Updated: 2021/11/27 21:43:37 by nsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,28 @@
 #include <stdarg.h>
 #include <stddef.h>
 
-static void	init_state_machine(t_printf *state_machine)
+static void	init_state(t_printf *state)
 {
-	state_machine->state = STATE_DEFAULT;
-	state_machine->bytes_printed = 0;
-	state_machine->callback[STATE_DEFAULT] = state_default;
-	state_machine->callback[STATE_FLAG] = state_flag;
+	state->current = STATE_DEFAULT;
+	state->bytes_printed = 0;
+	state->callback[STATE_DEFAULT] = state_default;
+	state->callback[STATE_FLAG] = state_flag;
 }
 
 int	ft_printf(const char *format, ...)
 {
-	t_printf		state_machine;
-	unsigned int	state;
+	t_printf		state;
+	unsigned int	current_state;
 
 	if (format == NULL)
 		return (-1);
-	init_state_machine(&state_machine);
-	va_start(state_machine.args, format);
-	while (format && *format && state_machine.state != STATE_END)
+	init_state(&state);
+	va_start(state.args, format);
+	while (state.current != STATE_END)
 	{
-		state = state_machine.state;
-		format = state_machine.callback[state](format, &state_machine);
+		current_state = state.current;
+		format = state.callback[current_state](format, &state);
 	}
-	va_end(state_machine.args);
-	return (state_machine.bytes_printed);
+	va_end(state.args);
+	return (state.bytes_printed);
 }
