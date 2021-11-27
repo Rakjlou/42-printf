@@ -6,7 +6,7 @@
 /*   By: nsierra- <nsierra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 23:08:59 by nsierra-          #+#    #+#             */
-/*   Updated: 2021/11/27 21:46:19 by nsierra-         ###   ########.fr       */
+/*   Updated: 2021/11/27 22:09:37 by nsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 static int	get_state(const char token)
 {
 	if (token == CONVERSION_CHARACTER)
-		return (STATE_CONVERSION);
+		return (STATE_CONVERSION_FLAGS);
 	else if (token == '\0')
 		return (STATE_END);
 	return (STATE_DEFAULT);

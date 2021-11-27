@@ -6,7 +6,7 @@
 #    By: nsierra- <nsierra-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/22 13:56:55 by nsierra-          #+#    #+#              #
-#    Updated: 2021/11/27 21:46:47 by nsierra-         ###   ########.fr        #
+#    Updated: 2021/11/27 22:24:49 by nsierra-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,10 @@ NAME = libftprintf.a
 SRC = ft_printf.c \
 	state_default.c \
 	state_conversion.c \
+	state_conversion_flags.c \
+	state_conversion_length.c \
+	state_conversion_precision.c \
+	state_conversion_print.c \
 	print_character.c \
 	print_string.c \
 	print_pointer.c \

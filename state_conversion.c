@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   state_flag.c                                       :+:      :+:    :+:   */
+/*   state_conversion.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsierra- <nsierra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 18:10:19 by nsierra-          #+#    #+#             */
-/*   Updated: 2021/11/27 21:47:14 by nsierra-         ###   ########.fr       */
+/*   Updated: 2021/11/27 22:11:37 by nsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
 #include <unistd.h>
 
 static const char	*load_blank_option(const char *format, t_printf_op *op)
