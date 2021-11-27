@@ -6,7 +6,7 @@
 /*   By: nsierra- <nsierra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 00:36:16 by nsierra-          #+#    #+#             */
-/*   Updated: 2021/11/27 21:42:09 by nsierra-         ###   ########.fr       */
+/*   Updated: 2021/11/27 21:47:44 by nsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define FLAGS " .+-0#"
 # define CONV_SPECIFIERS "cspdiuxX%"
 # define STATE_DEFAULT 0
-# define STATE_FLAG 1
+# define STATE_CONVERSION 1
 # define STATE_END 2
 
 # ifdef __APPLE__
@@ -56,7 +56,7 @@ typedef struct s_printf_op
 
 int			ft_printf(const char *format, ...);
 const char	*state_default(const char *format, t_printf *state);
-const char	*state_flag(const char *format, t_printf *state);
+const char	*state_conversion(const char *format, t_printf *state);
 void		print_character(t_printf_op *op, t_printf *state);
 void		print_string(t_printf_op *op, t_printf *state);
 void		print_pointer(t_printf_op *op, t_printf *state);

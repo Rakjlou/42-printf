@@ -6,7 +6,7 @@
 /*   By: nsierra- <nsierra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 00:30:31 by nsierra-          #+#    #+#             */
-/*   Updated: 2021/11/27 21:43:37 by nsierra-         ###   ########.fr       */
+/*   Updated: 2021/11/27 21:48:08 by nsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	init_state(t_printf *state)
 	state->current = STATE_DEFAULT;
 	state->bytes_printed = 0;
 	state->callback[STATE_DEFAULT] = state_default;
-	state->callback[STATE_FLAG] = state_flag;
+	state->callback[STATE_CONVERSION] = state_conversion;
 }
 
 int	ft_printf(const char *format, ...)

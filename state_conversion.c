@@ -6,7 +6,7 @@
 /*   By: nsierra- <nsierra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 18:10:19 by nsierra-          #+#    #+#             */
-/*   Updated: 2021/11/27 21:41:59 by nsierra-         ###   ########.fr       */
+/*   Updated: 2021/11/27 21:47:14 by nsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static void	dispatch_op(t_printf_op *op, t_printf *state)
 	callback[ft_strchr(CONV_SPECIFIERS, op->type) - CONV_SPECIFIERS](op, state);
 }
 
-const char	*state_flag(const char *format, t_printf *state)
+const char	*state_conversion(const char *format, t_printf *state)
 {
 	const char	*format_original;
 	t_printf_op	op;

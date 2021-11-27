@@ -6,7 +6,7 @@
 #    By: nsierra- <nsierra-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/22 13:56:55 by nsierra-          #+#    #+#              #
-#    Updated: 2021/11/27 01:19:08 by nsierra-         ###   ########.fr        #
+#    Updated: 2021/11/27 21:46:47 by nsierra-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = libftprintf.a
 
 SRC = ft_printf.c \
 	state_default.c \
-	state_flag.c \
+	state_conversion.c \
 	print_character.c \
 	print_string.c \
 	print_pointer.c \
