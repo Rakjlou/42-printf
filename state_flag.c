@@ -6,7 +6,7 @@
 /*   By: nsierra- <nsierra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 18:10:19 by nsierra-          #+#    #+#             */
-/*   Updated: 2021/11/26 23:50:41 by nsierra-         ###   ########.fr       */
+/*   Updated: 2021/11/27 02:08:29 by nsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ const char	*state_flag(const char *format, t_printf *state_machine)
 	if (ft_strchr(FLAG_TYPES, *format) == NULL)
 	{
 		state_machine->bytes_printed += 1;
-		write(STDIN_FILENO, "%", 1);
+		write(STDOUT_FILENO, "%", 1);
 		return (++format_original);
 	}
 	op.type = *format++;

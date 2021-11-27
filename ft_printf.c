@@ -6,7 +6,7 @@
 /*   By: nsierra- <nsierra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 00:30:31 by nsierra-          #+#    #+#             */
-/*   Updated: 2021/11/26 23:52:12 by nsierra-         ###   ########.fr       */
+/*   Updated: 2021/11/27 01:51:39 by nsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,5 @@ int	ft_printf(const char *format, ...)
 		format = state_machine.callback[state](format, &state_machine);
 	}
 	va_end(state_machine.args);
-	return (0);
+	return (state_machine.bytes_printed);
 }

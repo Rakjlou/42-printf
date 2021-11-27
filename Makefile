@@ -6,7 +6,7 @@
 #    By: nsierra- <nsierra-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/22 13:56:55 by nsierra-          #+#    #+#              #
-#    Updated: 2021/11/26 23:15:22 by nsierra-         ###   ########.fr        #
+#    Updated: 2021/11/27 01:19:08 by nsierra-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,13 +30,12 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror -pedantic
 IFLAGS = -I./ -I./libft/
-LFLAGS = -L. -lftprintf -L./libft/ -lft
+LFLAGS = -L. -lftprintf
 
 all: $(NAME)
 
 $(NAME): libft/libft.a $(OBJ)
-	ar rc  $(NAME) $(OBJ)
-	ranlib $(NAME)
+	ar rcs  $(NAME) $(OBJ) libft/*.o
 
 %.o:%.c
 	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
@@ -45,7 +44,7 @@ libft/libft.a:
 	make -C libft/ bonus
 
 test: $(NAME) tests.c
-	gcc $(IFLAGS) $(LFLAGS) tests.c $(LFLAGS) -o test && ./test
+	gcc $(IFLAGS) tests.c $(LFLAGS) -o test && ./test
 
 clean:
 	make -C libft/ clean

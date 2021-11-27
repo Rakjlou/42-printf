@@ -6,7 +6,7 @@
 /*   By: nsierra- <nsierra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 23:08:59 by nsierra-          #+#    #+#             */
-/*   Updated: 2021/11/26 23:50:23 by nsierra-         ###   ########.fr       */
+/*   Updated: 2021/11/27 02:08:08 by nsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,12 @@ const char	*state_default(const char *format, t_printf *state_machine)
 {
 	int	i;
 
-
 	i = 0;
 	while (format[i] && format[i] != FLAG_CHARACTER)
 		i++;
 	if (i != 0)
 	{
-		write(STDIN_FILENO, format, i);
+		write(STDOUT_FILENO, format, i);
 		state_machine->bytes_printed += i;
 	}
 	state_machine->state = get_state(format[i]);

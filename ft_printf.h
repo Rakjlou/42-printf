@@ -6,7 +6,7 @@
 /*   By: nsierra- <nsierra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 00:36:16 by nsierra-          #+#    #+#             */
-/*   Updated: 2021/11/26 23:51:38 by nsierra-         ###   ########.fr       */
+/*   Updated: 2021/11/27 02:41:46 by nsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@
 # define STATE_DEFAULT 0
 # define STATE_FLAG 1
 # define STATE_END 2
+
+# ifdef __APPLE__
+#  define NULLSTR_PLACEHOLDER "0x0"
+# else
+#  define NULLSTR_PLACEHOLDER "(null)"
+# endif
 
 /* POINTEUR NULL (nil) linux 0x0 mac */
 
