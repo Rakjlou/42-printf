@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_hex_uppercase.c                              :+:      :+:    :+:   */
+/*   ft_utoa.base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsierra- <nsierra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/26 22:15:41 by nsierra-          #+#    #+#             */
-/*   Updated: 2021/11/28 03:54:35 by nsierra-         ###   ########.fr       */
+/*   Created: 2021/11/28 02:43:44 by nsierra-          #+#    #+#             */
+/*   Updated: 2021/11/28 04:00:39 by nsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
 #include <stdlib.h>
-#include <unistd.h>
 
-void	print_hex_uppercase(t_printf *state)
+char	*ft_utoa_base(unsigned long num, char *base, unsigned int base_size)
 {
-	unsigned int	raw;
-	char			*to_print;
-	size_t			to_print_size;
+	char			buffer[64];
+	char			*result;
+	int				i;
+	int				j;
 
-	raw = va_arg(state->args, unsigned int);
-	to_print = ft_utoa_base(raw, "0123456789ABCDEF", 16);
-	to_print_size = ft_strlen(to_print);
-	write(STDOUT_FILENO, to_print, to_print_size);
-	state->bytes_printed += (int)to_print_size;
-	free(to_print);
+	i = 0;
+	j = 0;
+	while (1)
+	{
+		buffer[i++] = base[num % base_size];
+		if (num / base_size == 0)
+			break ;
+		num = num / base_size;
+	}
+	result = (char *)malloc(sizeof(char) * (i + 1));
+	while (i > 0)
+		result[j++] = buffer[--i];
+	result[j] = '\0';
+	return (result);
 }
