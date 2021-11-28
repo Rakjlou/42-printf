@@ -6,7 +6,7 @@
 /*   By: nsierra- <nsierra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 22:11:04 by nsierra-          #+#    #+#             */
-/*   Updated: 2021/11/27 22:22:56 by nsierra-         ###   ########.fr       */
+/*   Updated: 2021/11/28 01:52:17 by nsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,24 @@
 
 const char	*state_conversion_flags(const char *format, t_printf *state)
 {
+	ft_bzero(&state->op, sizeof(t_printf_op));
+	state->op.start = format++;
+	while (*format && ft_strchr(FLAGS, *format) != NULL)
+	{
+		if (*format == ' ')
+			state->op.blank = TRUE;
+		else if (*format == '+')
+			state->op.force_plus = TRUE;
+		else if (*format == '-')
+			state->op.justified_left = TRUE;
+		else if (*format == '0')
+			state->op.zero_padded = TRUE;
+		else if (*format == '#')
+			state->op.alternative = TRUE;
+		format++;
+	}
 	state->current = STATE_CONVERSION_LENGTH;
+	if (*format == '\0')
+		state->current = STATE_WRONG_FLAG;
 	return (format);
 }

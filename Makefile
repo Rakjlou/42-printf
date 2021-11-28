@@ -6,7 +6,7 @@
 #    By: nsierra- <nsierra-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/22 13:56:55 by nsierra-          #+#    #+#              #
-#    Updated: 2021/11/27 22:38:20 by nsierra-         ###   ########.fr        #
+#    Updated: 2021/11/28 01:51:54 by nsierra-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,6 @@ NAME = libftprintf.a
 
 SRC = ft_printf.c \
 	state/state_default.c \
-	state/state_conversion.c \
 	state/state_conversion_flags.c \
 	state/state_conversion_length.c \
 	state/state_conversion_precision.c \
@@ -27,6 +26,7 @@ SRC = ft_printf.c \
 	conversion/print_hex_lowercase.c \
 	conversion/print_hex_uppercase.c \
 	conversion/print_flag.c \
+	print_op_debug_REMOVE_ME.c \
 
 OBJ = $(SRC:.c=.o)
 
