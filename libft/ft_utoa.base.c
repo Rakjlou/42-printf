@@ -6,7 +6,7 @@
 /*   By: nsierra- <nsierra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 02:43:44 by nsierra-          #+#    #+#             */
-/*   Updated: 2021/11/28 04:00:39 by nsierra-         ###   ########.fr       */
+/*   Updated: 2021/11/28 04:59:09 by nsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 char	*ft_utoa_base(unsigned long num, char *base, unsigned int base_size)
 {
-	char			buffer[64];
-	char			*result;
-	int				i;
-	int				j;
+	char	buffer[64];
+	char	*result;
+	int		i;
+	int		j;
 
 	i = 0;
 	j = 0;

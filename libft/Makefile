@@ -6,7 +6,7 @@
 #    By: nsierra- <nsierra-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/22 13:56:55 by nsierra-          #+#    #+#              #
-#    Updated: 2021/11/28 03:34:38 by nsierra-         ###   ########.fr        #
+#    Updated: 2021/11/28 04:56:33 by nsierra-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,8 +73,7 @@ all: $(NAME)
 	$(CC) $(CFLAGS) -I . -c $< -o $@
 
 $(NAME): $(OBJ)
-	ar rc  $(NAME) $(OBJ)
-	ranlib $(NAME)
+	ar rcs  $(NAME) $(OBJ)
 
 bonus: $(OBJ) $(OBJ_BONUS)
 	ar rc  $(NAME) $(OBJ) $(OBJ_BONUS)

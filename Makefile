@@ -6,7 +6,7 @@
 #    By: nsierra- <nsierra-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/22 13:56:55 by nsierra-          #+#    #+#              #
-#    Updated: 2021/11/28 02:54:57 by nsierra-         ###   ########.fr        #
+#    Updated: 2021/11/28 05:05:04 by nsierra-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,14 +32,14 @@ OBJ = $(SRC:.c=.o)
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -pedantic
+CFLAGS = -Wall -Wextra -Werror
 IFLAGS = -I./ -I./libft/
-LFLAGS = -L. -lftprintf
+LFLAGS = -L. -lftprintf -L./libft/ -lft
 
 all: $(NAME)
 
 $(NAME): libft/libft.a $(OBJ)
-	ar rcs  $(NAME) $(OBJ) libft/*.o
+	ar rcs  $(NAME) $(OBJ)
 
 %.o:%.c
 	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
