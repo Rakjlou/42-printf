@@ -6,7 +6,7 @@
 /*   By: nsierra- <nsierra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 00:30:31 by nsierra-          #+#    #+#             */
-/*   Updated: 2021/11/27 23:54:31 by nsierra-         ###   ########.fr       */
+/*   Updated: 2021/11/29 21:03:54 by nsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static void	init_state(t_printf *state)
 	state->callback[STATE_CONVERSION_LENGTH] = state_conversion_length;
 	state->callback[STATE_CONVERSION_PRECISION] = state_conversion_precision;
 	state->callback[STATE_CONVERSION_PRINT] = state_conversion_print;
+	state->callback[STATE_WRONG_FLAG] = state_wrong_flag;
 }
 
 int	ft_printf(const char *format, ...)

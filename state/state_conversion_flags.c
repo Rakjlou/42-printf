@@ -6,7 +6,7 @@
 /*   By: nsierra- <nsierra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 22:11:04 by nsierra-          #+#    #+#             */
-/*   Updated: 2021/11/28 01:52:17 by nsierra-         ###   ########.fr       */
+/*   Updated: 2021/11/29 18:05:04 by nsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ const char	*state_conversion_flags(const char *format, t_printf *state)
 		if (*format == ' ')
 			state->op.blank = TRUE;
 		else if (*format == '+')
-			state->op.force_plus = TRUE;
+			state->op.force_sign = TRUE;
 		else if (*format == '-')
 			state->op.justified_left = TRUE;
 		else if (*format == '0')

@@ -6,7 +6,7 @@
 /*   By: nsierra- <nsierra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 00:36:16 by nsierra-          #+#    #+#             */
-/*   Updated: 2021/11/28 06:17:20 by nsierra-         ###   ########.fr       */
+/*   Updated: 2021/11/30 00:22:23 by nsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,26 +37,24 @@
 #  define NULLSTR_PLACEHOLDER "(null)"
 # endif
 
-/* POINTEUR NULL (nil) linux 0x0 mac */
-
 typedef struct s_printf_op
 {
 	t_bool		alternative;
 	t_bool		zero_padded;
 	t_bool		justified_left;
 	t_bool		blank;
-	t_bool		force_plus;
+	t_bool		force_sign;
 	t_bool		precision;
 	t_bool		length;
-	int			precision_value;
-	int			length_value;
+	size_t		precision_value;
+	size_t		length_value;
 	char		type;
 	const char	*start;
 }	t_printf_op;
 
 typedef struct s_printf
 {
-	const char		*(*callback[5])(const char *, struct s_printf *);
+	const char		*(*callback[6])(const char *, struct s_printf *);
 	va_list			args;
 	int				bytes_printed;
 	unsigned int	current;
@@ -65,12 +63,15 @@ typedef struct s_printf
 }	t_printf;
 
 int			ft_printf(const char *format, ...);
+/* STATES */
 const char	*state_default(const char *format, t_printf *state);
 const char	*state_conversion(const char *format, t_printf *state);
 const char	*state_conversion_flags(const char *format, t_printf *state);
 const char	*state_conversion_length(const char *format, t_printf *state);
 const char	*state_conversion_precision(const char *format, t_printf *state);
 const char	*state_conversion_print(const char *format, t_printf *state);
+const char	*state_wrong_flag(const char *format, t_printf *state);
+/* CONVERSIONS */
 void		print_character(t_printf *state);
 void		print_string(t_printf *state);
 void		print_pointer(t_printf *state);
@@ -79,6 +80,10 @@ void		print_unsigned_int(t_printf *state);
 void		print_hex_lowercase(t_printf *state);
 void		print_hex_uppercase(t_printf *state);
 void		print_flag(t_printf *state);
+/* UTILS */
+char		*apply_length_flag(t_printf *state, char *original);
+char		*apply_sharp_flag(t_printf *state, char *original, char *prefix);
+void		cat_padding(t_printf *state, char *str, int padding_size);
 
 /* REMOVE ME OR ELSE */
 void		print_op_debug(t_printf_op *op);

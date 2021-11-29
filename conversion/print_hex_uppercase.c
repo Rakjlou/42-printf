@@ -6,13 +6,20 @@
 /*   By: nsierra- <nsierra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 22:15:41 by nsierra-          #+#    #+#             */
-/*   Updated: 2021/11/28 03:54:35 by nsierra-         ###   ########.fr       */
+/*   Updated: 2021/11/29 23:59:16 by nsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdlib.h>
 #include <unistd.h>
+
+static char	*apply_flags(t_printf *state, char *to_print)
+{
+	to_print = apply_sharp_flag(state, to_print, "0X");
+	to_print = apply_length_flag(state, to_print);
+	return (to_print);
+}
 
 void	print_hex_uppercase(t_printf *state)
 {
@@ -22,6 +29,9 @@ void	print_hex_uppercase(t_printf *state)
 
 	raw = va_arg(state->args, unsigned int);
 	to_print = ft_utoa_base(raw, "0123456789ABCDEF", 16);
+	if (to_print == NULL)
+		return ;
+	to_print = apply_flags(state, to_print);
 	to_print_size = ft_strlen(to_print);
 	write(STDOUT_FILENO, to_print, to_print_size);
 	state->bytes_printed += (int)to_print_size;

@@ -6,7 +6,7 @@
 /*   By: nsierra- <nsierra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 22:49:05 by nsierra-          #+#    #+#             */
-/*   Updated: 2021/11/28 06:55:29 by nsierra-         ###   ########.fr       */
+/*   Updated: 2021/11/29 19:57:39 by nsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ void	print_op_debug(t_printf_op *op)
 	printf("\tzero padded: %d\n", op->zero_padded);
 	printf("\tjustified_left: %d\n", op->justified_left);
 	printf("\tblank: %d\n", op->blank);
-	printf("\tforce_plus: %d\n", op->force_plus);
+	printf("\tforce_sign: %d\n", op->force_sign);
 	printf("\tprecision: %d\n", op->precision);
 	printf("\tlength: %d\n", op->length);
-	printf("\tprecision_value: %d\n", op->precision_value);
-	printf("\tlength_value: %d\n", op->length_value);
+	printf("\tprecision_value: %ld\n", op->precision_value);
+	printf("\tlength_value: %ld\n", op->length_value);
 	printf("\tstart: >%s<\n", op->start);
 	puts("]");
 }

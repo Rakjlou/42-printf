@@ -6,7 +6,7 @@
 /*   By: nsierra- <nsierra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 18:10:19 by nsierra-          #+#    #+#             */
-/*   Updated: 2021/11/27 22:11:37 by nsierra-         ###   ########.fr       */
+/*   Updated: 2021/11/29 18:05:06 by nsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ static const char	*load_op_config_options(const char *format, t_printf_op *op)
 			op->padding = TRUE;
 		else if (*format == '-' && op->justified_left == FALSE)
 			op->justified_left = TRUE;
-		else if (*format == '+' && op->force_plus == FALSE)
-			op->force_plus = TRUE;
+		else if (*format == '+' && op->force_sign == FALSE)
+			op->force_sign = TRUE;
 		format++;
 	}
 	return (format);
