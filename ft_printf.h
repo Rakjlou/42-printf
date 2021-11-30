@@ -86,8 +86,4 @@ char		*apply_sharp_flag(t_printf *state, char *original, char *prefix);
 char		*apply_precison_flag(t_printf *state, int raw, char *original);
 void		cat_padding(t_printf *state, char *str, int padding_size);
 
-/* REMOVE ME OR ELSE */
-void		print_op_debug(t_printf_op *op);
-void		print_state(t_printf *state);
-
 #endif

@@ -27,8 +27,7 @@ SRC = ft_printf.c \
 	conversion/print_hex_lowercase.c \
 	conversion/print_hex_uppercase.c \
 	conversion/print_flag.c \
-	utils.c \
-	print_op_debug_REMOVE_ME.c \
+	utils.c
 
 OBJ = $(SRC:.c=.o)
 
