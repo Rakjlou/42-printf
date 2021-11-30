@@ -31,7 +31,7 @@
 
 # ifdef __APPLE__
 #  define NULL_PLACEHOLDER "0x0"
-#  define NULLSTR_PLACEHOLDER "0x0"
+#  define NULLSTR_PLACEHOLDER "(null)"
 # else
 #  define NULL_PLACEHOLDER "(nil)"
 #  define NULLSTR_PLACEHOLDER "(null)"
