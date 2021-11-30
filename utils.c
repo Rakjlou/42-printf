@@ -6,7 +6,7 @@
 /*   By: nsierra- <nsierra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 20:22:23 by nsierra-          #+#    #+#             */
-/*   Updated: 2021/11/30 15:24:07 by nsierra-         ###   ########.fr       */
+/*   Updated: 2021/11/30 16:29:16 by nsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,35 @@ char	*apply_length_flag(t_printf *state, char *original)
 		ft_strlcat(flagged, original + i, state->op.length_value + 1);
 	free(original);
 	return (flagged);
+}
+
+char	*apply_precison_flag(t_printf *state, int raw, char *original)
+{
+	char	*fl;
+	char	*original_save;
+	size_t	n_size;
+	size_t	fl_size;
+
+	if (state->op.precision == FALSE)
+		return (original);
+	original_save = original;
+	if (raw < 0)
+		++original;
+	n_size = ft_strlen(original);
+	if (n_size >= state->op.precision_value)
+		return (original_save);
+	fl_size = (state->op.precision_value - n_size) + n_size;
+	if (raw < 0)
+		++fl_size;
+	fl = ft_calloc(fl_size + 1, sizeof(char));
+	if (fl == NULL)
+		return (original);
+	else if (raw < 0)
+		ft_strlcat(fl, "-", fl_size + 1);
+	ft_fill_str(ft_strchr(fl, '\0'), '0', (state->op.precision_value - n_size));
+	ft_strlcat(fl, original, fl_size + 1);
+	free(original_save);
+	return (fl);
 }
 
 char	*apply_sharp_flag(t_printf *state, char *original, char *prefix)

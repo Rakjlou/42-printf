@@ -6,7 +6,7 @@
 /*   By: nsierra- <nsierra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 22:15:41 by nsierra-          #+#    #+#             */
-/*   Updated: 2021/11/30 15:06:58 by nsierra-         ###   ########.fr       */
+/*   Updated: 2021/11/30 16:25:48 by nsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,25 @@ static char	*apply_space_flag(t_printf *state, int raw, char *original)
 	return (flagged);
 }
 
+static char	*apply_special_cases(t_printf *state, int raw, char *original)
+{
+	char	*flagged;
+
+	if (state->op.precision == TRUE
+		&& state->op.precision_value == 0 && raw == 0)
+	{
+		flagged = ft_calloc(1, sizeof(char));
+		if (flagged == NULL)
+			return (original);
+		return (flagged);
+	}
+	return (original);
+}
+
 static char	*apply_flags(t_printf *state, int raw, char *to_print)
 {
+	to_print = apply_special_cases(state, raw, to_print);
+	to_print = apply_precison_flag(state, raw, to_print);
 	to_print = apply_plus_flag(state, raw, to_print);
 	to_print = apply_space_flag(state, raw, to_print);
 	to_print = apply_length_flag(state, to_print);

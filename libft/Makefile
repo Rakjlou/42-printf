@@ -6,7 +6,7 @@
 #    By: nsierra- <nsierra-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/22 13:56:55 by nsierra-          #+#    #+#              #
-#    Updated: 2021/11/28 04:56:33 by nsierra-         ###   ########.fr        #
+#    Updated: 2021/11/30 15:50:21 by nsierra-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,8 @@ SRC_BONUS = ft_lstnew.c \
 	ft_lstiter.c \
 	ft_lstmap.c \
 	ft_utoa.base.c \
-	ft_ltoa_base.c
+	ft_ltoa_base.c \
+	ft_fill_str.c
 
 OBJ_BONUS = $(SRC_BONUS:.c=.o)
 

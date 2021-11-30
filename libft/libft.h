@@ -6,7 +6,7 @@
 /*   By: nsierra- <nsierra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 12:48:31 by nsierra-          #+#    #+#             */
-/*   Updated: 2021/11/28 03:32:18 by nsierra-         ###   ########.fr       */
+/*   Updated: 2021/11/30 15:50:09 by nsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,6 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 char	*ft_utoa_base(unsigned long num, char *base, unsigned int base_size);
 char	*ft_ltoa_base(long num, char *base, unsigned int base_size);
+char	*ft_fill_str(char *str, char to_fill, size_t size);
 
 #endif

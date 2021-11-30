@@ -6,7 +6,7 @@
 /*   By: nsierra- <nsierra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 22:15:41 by nsierra-          #+#    #+#             */
-/*   Updated: 2021/11/30 00:23:04 by nsierra-         ###   ########.fr       */
+/*   Updated: 2021/11/30 16:00:13 by nsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 static char	*apply_flags(t_printf *state, char *to_print)
 {
+	to_print = apply_precison_flag(state, 1, to_print);
 	to_print = apply_length_flag(state, to_print);
 	return (to_print);
 }

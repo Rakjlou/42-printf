@@ -6,7 +6,7 @@
 /*   By: nsierra- <nsierra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 00:36:16 by nsierra-          #+#    #+#             */
-/*   Updated: 2021/11/30 15:23:47 by nsierra-         ###   ########.fr       */
+/*   Updated: 2021/11/30 15:59:30 by nsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ void		print_flag(t_printf *state);
 /* UTILS */
 char		*apply_length_flag(t_printf *state, char *original);
 char		*apply_sharp_flag(t_printf *state, char *original, char *prefix);
+char		*apply_precison_flag(t_printf *state, int raw, char *original);
 void		cat_padding(t_printf *state, char *str, int padding_size);
 
 /* REMOVE ME OR ELSE */
