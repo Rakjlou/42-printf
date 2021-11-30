@@ -6,7 +6,7 @@
 /*   By: nsierra- <nsierra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 22:15:41 by nsierra-          #+#    #+#             */
-/*   Updated: 2021/11/29 22:08:35 by nsierra-         ###   ########.fr       */
+/*   Updated: 2021/11/30 15:06:58 by nsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,23 @@ static char	*apply_plus_flag(t_printf *state, int raw, char *original)
 	return (flagged);
 }
 
+static char	*apply_space_flag(t_printf *state, int raw, char *original)
+{
+	char	*flagged;
+
+	if (state->op.blank == FALSE || state->op.force_sign == TRUE || raw < 0)
+		return (original);
+	flagged = ft_strjoin(" ", original);
+	if (flagged == NULL)
+		return (original);
+	free(original);
+	return (flagged);
+}
+
 static char	*apply_flags(t_printf *state, int raw, char *to_print)
 {
 	to_print = apply_plus_flag(state, raw, to_print);
+	to_print = apply_space_flag(state, raw, to_print);
 	to_print = apply_length_flag(state, to_print);
 	return (to_print);
 }

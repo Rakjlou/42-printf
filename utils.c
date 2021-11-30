@@ -6,7 +6,7 @@
 /*   By: nsierra- <nsierra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 20:22:23 by nsierra-          #+#    #+#             */
-/*   Updated: 2021/11/30 00:05:03 by nsierra-         ###   ########.fr       */
+/*   Updated: 2021/11/30 15:24:07 by nsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ char	*apply_sharp_flag(t_printf *state, char *original, char *prefix)
 {
 	char	*flagged;
 
-	if (state->op.alternative == FALSE || ft_strncmp(original, "0", ft_strlen(original)) == 0)
+	if (state->op.alternative == FALSE
+		|| ft_strncmp(original, "0", ft_strlen(original)) == 0)
 		return (original);
 	flagged = ft_strjoin(prefix, original);
 	if (flagged == NULL)

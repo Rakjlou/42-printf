@@ -6,7 +6,7 @@
 /*   By: nsierra- <nsierra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 22:15:41 by nsierra-          #+#    #+#             */
-/*   Updated: 2021/11/29 23:16:46 by nsierra-         ###   ########.fr       */
+/*   Updated: 2021/11/30 15:22:40 by nsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,10 @@ static void	print_padding(size_t size)
 		write(STDOUT_FILENO, " ", 1);
 }
 
-void	print_string(t_printf *state)
+static void	actual_print(t_printf *state, char *to_print)
 {
-	char	*to_print;
 	size_t	source_size;
 
-	to_print = va_arg(state->args, char *);
-	if (to_print == NULL)
-		to_print = NULLSTR_PLACEHOLDER;
 	source_size = ft_strlen(to_print);
 	if (state->op.length == FALSE || state->op.length_value < source_size)
 	{
@@ -48,4 +44,23 @@ void	print_string(t_printf *state)
 		write(STDOUT_FILENO, to_print, source_size);
 	}
 	state->bytes_printed += (int)state->op.length_value;
+}
+
+void	print_string(t_printf *state)
+{
+	char	*to_print;
+
+	to_print = va_arg(state->args, char *);
+	if (to_print == NULL)
+		to_print = NULLSTR_PLACEHOLDER;
+	if (state->op.precision == TRUE)
+	{
+		to_print = ft_substr(to_print, 0, state->op.precision_value);
+		if (to_print == NULL)
+			return ;
+		actual_print(state, to_print);
+		free(to_print);
+	}
+	else
+		actual_print(state, to_print);
 }
