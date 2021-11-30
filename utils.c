@@ -6,7 +6,7 @@
 /*   By: nsierra- <nsierra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 20:22:23 by nsierra-          #+#    #+#             */
-/*   Updated: 2021/11/30 16:29:16 by nsierra-         ###   ########.fr       */
+/*   Updated: 2021/11/30 16:57:21 by nsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	*apply_length_flag(t_printf *state, char *original)
 	flagged = ft_calloc(state->op.length_value + 1, sizeof(char));
 	if (flagged == NULL)
 		return (original);
-	if (*original == '+' || *original == '-')
+	if ((*original == '+' || *original == '-') && state->op.zero_padded)
 		flagged[i++] = *original;
 	if (state->op.justified_left == TRUE)
 		ft_strlcat(flagged, original + i, state->op.length_value + 1);
