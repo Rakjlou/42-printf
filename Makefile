@@ -6,7 +6,7 @@
 #    By: nsierra- <nsierra-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/22 13:56:55 by nsierra-          #+#    #+#              #
-#    Updated: 2021/11/29 20:24:15 by nsierra-         ###   ########.fr        #
+#    Updated: 2021/12/01 02:22:24 by nsierra-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 # https://github.com/paulo-santana/ft_printf_tester
@@ -35,12 +35,12 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror -pedantic
 IFLAGS = -I./ -I./libft/
-LFLAGS = -L. -lftprintf -L./libft/ -lft
+LFLAGS = -L. -lftprintf
 
 all: $(NAME)
 
 $(NAME): libft/libft.a $(OBJ)
-	ar rcs  $(NAME) $(OBJ)
+	ar rcs  $(NAME) $(OBJ) libft/*.o
 
 %.o:%.c
 	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
