@@ -6,10 +6,10 @@
 #    By: nsierra- <nsierra-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/22 13:56:55 by nsierra-          #+#    #+#              #
-#    Updated: 2021/12/01 02:22:24 by nsierra-         ###   ########.fr        #
+#    Updated: 2021/12/01 02:48:14 by nsierra-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-# https://github.com/paulo-santana/ft_printf_tester
+
 NAME = libftprintf.a
 
 SRC = ft_printf.c \
@@ -33,7 +33,7 @@ OBJ = $(SRC:.c=.o)
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -pedantic
+CFLAGS = -Wall -Wextra -Werror
 IFLAGS = -I./ -I./libft/
 LFLAGS = -L. -lftprintf
 
