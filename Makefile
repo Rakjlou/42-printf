@@ -6,7 +6,7 @@
 #    By: nsierra- <nsierra-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/22 13:56:55 by nsierra-          #+#    #+#              #
-#    Updated: 2021/12/01 03:05:45 by nsierra-         ###   ########.fr        #
+#    Updated: 2021/12/01 03:08:40 by nsierra-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ LFLAGS = -L. -lftprintf
 all: $(NAME)
 
 $(NAME): libft/libft.a $(OBJ)
-	ar rcs  $(NAME) $(OBJ) libft/*.o
+	ar rcs  $(NAME) $(OBJ) libft/*.o # This destroys me inside
 
 %.o:%.c
 	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
@@ -49,9 +49,6 @@ libft/libft.a:
 	make -C libft/ bonus
 
 bonus: $(NAME)
-
-test: $(NAME) tests.c
-	gcc $(IFLAGS) tests.c $(LFLAGS) -o test && ./test
 
 clean:
 	make -C libft/ clean
