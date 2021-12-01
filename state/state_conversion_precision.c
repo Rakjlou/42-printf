@@ -18,6 +18,7 @@ const char	*state_conversion_precision(const char *format, t_printf *state)
 	if (*format != '.')
 		return (format);
 	state->op.precision = TRUE;
+	state->op.zero_padded = FALSE;
 	++format;
 	if (!ft_isdigit(*format) && *format != '\0')
 		return (format);

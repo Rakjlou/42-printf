@@ -84,6 +84,8 @@ void		print_flag(t_printf *state);
 char		*apply_length_flag(t_printf *state, char *original);
 char		*apply_sharp_flag(t_printf *state, char *original, char *prefix);
 char		*apply_precison_flag(t_printf *state, int raw, char *original);
+char		*apply_special_cases(t_printf *state, int raw, char *original);
+
 void		cat_padding(t_printf *state, char *str, int padding_size);
 
 #endif

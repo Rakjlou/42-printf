@@ -40,21 +40,6 @@ static char	*apply_space_flag(t_printf *state, int raw, char *original)
 	return (flagged);
 }
 
-static char	*apply_special_cases(t_printf *state, int raw, char *original)
-{
-	char	*flagged;
-
-	if (state->op.precision == TRUE
-		&& state->op.precision_value == 0 && raw == 0)
-	{
-		flagged = ft_calloc(1, sizeof(char));
-		if (flagged == NULL)
-			return (original);
-		return (flagged);
-	}
-	return (original);
-}
-
 static char	*apply_flags(t_printf *state, int raw, char *to_print)
 {
 	to_print = apply_special_cases(state, raw, to_print);

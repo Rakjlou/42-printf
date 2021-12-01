@@ -14,8 +14,9 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-static char	*apply_flags(t_printf *state, char *to_print)
+static char	*apply_flags(t_printf *state, unsigned int raw, char *to_print)
 {
+	to_print = apply_special_cases(state, (int)raw, to_print);
 	to_print = apply_precison_flag(state, 1, to_print);
 	to_print = apply_length_flag(state, to_print);
 	return (to_print);
@@ -31,7 +32,7 @@ void	print_unsigned_int(t_printf *state)
 	to_print = ft_utoa_base(raw, "0123456789", 10);
 	if (to_print == NULL)
 		return ;
-	to_print = apply_flags(state, to_print);
+	to_print = apply_flags(state, raw, to_print);
 	to_print_size = ft_strlen(to_print);
 	write(STDOUT_FILENO, to_print, to_print_size);
 	state->bytes_printed += (int)to_print_size;

@@ -18,7 +18,8 @@ void	cat_padding(t_printf *state, char *str, int padding_size)
 {
 	char	padding_character;
 
-	if (state->op.zero_padded == TRUE && state->op.justified_left == FALSE)
+	if (state->op.zero_padded == TRUE
+		&& state->op.justified_left == FALSE)
 		padding_character = '0';
 	else
 		padding_character = ' ';
@@ -95,4 +96,20 @@ char	*apply_sharp_flag(t_printf *state, char *original, char *prefix)
 		return (original);
 	free(original);
 	return (flagged);
+}
+
+char	*apply_special_cases(t_printf *state, int raw, char *original)
+{
+	char	*flagged;
+
+	if (state->op.precision == TRUE
+		&& state->op.precision_value == 0 && raw == 0)
+	{
+		flagged = ft_calloc(1, sizeof(char));
+		if (flagged == NULL)
+			return (original);
+		free(original);
+		return (flagged);
+	}
+	return (original);
 }

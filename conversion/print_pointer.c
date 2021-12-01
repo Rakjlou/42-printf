@@ -19,6 +19,8 @@ static char	*get_pointer_string(unsigned long raw)
 	char	*hex;
 	char	*ptr_str;
 
+	if (raw == 0)
+		return (ft_strdup(NULL_PLACEHOLDER));
 	hex = ft_utoa_base(raw, "0123456789abcdef", 16);
 	if (hex == NULL)
 		return (NULL);
@@ -42,22 +44,12 @@ void	print_pointer(t_printf *state)
 	size_t			to_print_size;
 
 	raw = va_arg(state->args, unsigned long);
-	if (raw == 0)
-	{
-		to_print = NULL_PLACEHOLDER;
-		to_print_size = ft_strlen(NULL_PLACEHOLDER);
-		write(STDOUT_FILENO, to_print, to_print_size);
-		state->bytes_printed += to_print_size;
-	}
-	else
-	{
-		to_print = get_pointer_string(raw);
-		if (to_print == NULL)
-			return ;
-		to_print = apply_flags(state, to_print);
-		to_print_size = ft_strlen(to_print);
-		write(STDOUT_FILENO, to_print, to_print_size);
-		free(to_print);
-		state->bytes_printed += (int)to_print_size;
-	}
+	to_print = get_pointer_string(raw);
+	if (to_print == NULL)
+		return ;
+	to_print = apply_flags(state, to_print);
+	to_print_size = ft_strlen(to_print);
+	write(STDOUT_FILENO, to_print, to_print_size);
+	free(to_print);
+	state->bytes_printed += (int)to_print_size;
 }
